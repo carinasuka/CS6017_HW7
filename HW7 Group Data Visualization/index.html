@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>D3 Visualization</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #FFEBF0, #FFF5F7);
+            overflow: hidden;
+        }
+        .bar {
+            fill: #FFB6C1;
+        }
+        .bar.bird {
+            fill: #ADD8E6;
+        }
+        .bar.rabbit {
+            fill: #90EE90;
+        }
+        .bar.dog {
+            fill: #FFD700;
+        }
+        .bar.cat {
+            fill: #FFB6C1;
+        }
+        .bar:hover {
+            fill: #FF69B4;
+        }
+        .line {
+            fill: none;
+            stroke-width: 2px;
+        }
+        .dot {
+            fill: #FFB6C1;
+        }
+        .dot.bird {
+            fill: #ADD8E6;
+        }
+        .dot.rabbit {
+            fill: #90EE90;
+        }
+        .dot.dog {
+            fill: #FFD700;
+        }
+        .dot.cat {
+            fill: #FFB6C1;
+        }
+        .dot:hover {
+            fill: #FF69B4;
+        }
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            padding: 8px;
+            font: 12px sans-serif;
+            background: #FFF0F5;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .charts-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .emoji-container {
+            width: 150px;
+            text-align: center;
+            font-size: 100px;
+            margin-left: 20px;
+        }
+        .title {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 24px;
+            text-anchor: middle;
+        }
+        .flower-petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FFC0CB;
+            border-radius: 50%;
+            animation: float 10s infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="charts-container">
+        <div id="barChart"></div>
+        <div id="lineChart"></div>
+    </div>
+    <div class="emoji-container" id="emojiContainer"></div>
+</div>
+<script src="script.js"></script>
+<script>
+   //background
+    for (let i = 0; i < 50; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'flower-petal';
+        petal.style.left = `${Math.random() * 100}vw`;
+        petal.style.animationDuration = `${5 + Math.random() * 5}s`;
+        petal.style.animationDelay = `${Math.random() * 5}s`;
+        document.body.appendChild(petal);
+    }
+</script>
+</body>
+</html>
